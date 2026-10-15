@@ -1,0 +1,69 @@
+Initial Email Triage
+
+Case Information
+
+Case ID: PHISH-2026-001
+Incident Type: Suspected Phishing
+Evidence Type: Simulated '.eml' file
+Initial triage completed
+
+1. Email Overview
+
+| Field | Observed Value |
+|---|---|
+| Display Name | PayPal Security |
+| From | security@yznphish.com |
+| Reply-To | recovery-support@paypal-account-help.ru |
+| Recipient | victim@example-corp.com |
+| Subject | Urgent: Your Account Has Been Limited - Verify Now |
+| Return-Path | bounce@mkt7.yznphish.com |
+| Attachment | Invoice_Statement.pdf |
+| Spam Score | 9.8 (threshold: 5.0) |
+
+2. Initial Suspicious Indicators
+
+- Sender and Reply-To Mismatch
+
+The display name claims to represent PayPal Security, while the sender uses 'yznphish.com' and the Reply-To address uses `paypal-account-help.ru`.
+
+This discrepancy warrants further investigation.
+
+- Urgency and Threats
+
+The email claims that account access has been limited and threatens permanent suspension unless the recipient verifies their account within 24 hours.
+
+This creates urgency and may pressure the recipient into acting without verifying the sender.
+
+- Suspicious Link
+
+The plain-text email contains a defanged URL associated with 'yznphish[.]com'.
+
+The HTML version contains a different URL using the reserved '.invalid' domain. This discrepancy must be documented during URL extraction.
+
+Neither URL should be treated as a verified live phishing destination.
+
+- Attachment
+
+The email contains 'Invoice_Statement.pdf'.
+
+Static inspection of the embedded PDF data indicates a JavaScript action that displays a training message. The attachment must not be executed.
+
+3. Preliminary Assessment
+
+Verdict: Suspicious - further investigation required.
+
+The sender discrepancies, urgent account-verification request, suspicious URL indicators and attachment warrant continued analysis.
+
+4. Next Investigation Steps
+
+1. Examine the complete Received header chain.
+2. Review SPF, DKIM and DMARC results.
+3. Extract and compare URLs from the plain-text and HTML sections.
+4. Document the limitations of VirusTotal analysis for reserved training domains.
+5. Simulate message-trace and click-investigation results using clearly labelled lab data.
+
+5. Evidence Limitations
+
+The sample uses documentation-range IP addresses and non-resolving example domains. Authentication results are present in the supplied headers but have not been independently verified.
+
+No real recipient list, delivery logs or click telemetry has been provided.
