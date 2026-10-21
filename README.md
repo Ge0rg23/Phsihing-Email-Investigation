@@ -34,10 +34,4 @@ them to verify their account through an embedded link.
 4. [Message Trace](investigations/04-message-trace.md)
 5. [User Impact](investigations/05-user-impact.md)
 
-## Findings
 
-TBD
-
-## Response
-
-TBD
